@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6-WEEK FOUNDATIONS | Body Software Update</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -105,15 +104,26 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        /* Lead Form Styling */
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: var(--brand-olive);
+            background: rgba(255, 255, 255, 0.08);
+            outline: none;
+        }
     </style>
 </head>
 <body class="text-white antialiased">
 
-    <!-- Background Decoration -->
     <div class="bg-blob top-[-15%] left-[-10%]"></div>
     <div class="bg-blob bottom-[10%] right-[-5%]" style="background: radial-gradient(circle, rgba(163, 177, 138, 0.1) 0%, rgba(0, 0, 0, 0) 70%);"></div>
 
-    <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 header-glass p-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-left leading-none">
@@ -138,11 +148,10 @@
         </div>
     </header>
 
-    <!-- 1. Hero Section -->
     <section class="min-h-[90vh] flex flex-col items-start justify-center px-4 sm:px-6 py-20">
         <div class="max-w-6xl mx-auto w-full">
             <h1 class="text-6xl sm:text-7xl md:text-9xl font-black leading-[0.85] mb-10 uppercase max-w-5xl tracking-tighter">
-                Actually <span class="text-brand-olive">enjoy the process</span> of getting strong.
+                <span id="personalized-greet">Actually</span> <span class="text-brand-olive">enjoy the process</span> of getting strong.
             </h1>
             <p class="text-xl sm:text-2xl font-light italic mt-4 max-w-4xl text-neutral-300 leading-relaxed border-l-2 border-brand-olive pl-6">
                 Let’s be honest: The fitness world is kind of a mess. Foundations is different. This isn't a "shout-at-you" bootcamp—it’s a smart roadmap for people ready to move from "just exercising" to actually training.
@@ -151,7 +160,6 @@
     </section>
     
     <main>
-        <!-- 2. Is This For You? -->
         <section class="py-24 px-4 sm:px-6">
             <div class="max-w-6xl mx-auto glass-card-light rounded-[2.5rem] p-12 text-black overflow-hidden relative shadow-2xl">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -176,7 +184,6 @@
             </div>
         </section>
 
-        <!-- 3. The Roadmap -->
         <section id="roadmap" class="py-24 px-4 sm:px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="mb-20 text-center md:text-left">
@@ -211,7 +218,6 @@
             </div>
         </section>
 
-        <!-- 4. Reality Check -->
         <section class="py-24 px-4 sm:px-6 relative overflow-hidden">
             <div class="max-w-6xl mx-auto glass-card-light rounded-[2.5rem] p-12 sm:p-20 text-black shadow-2xl border-none">
                 <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter max-w-4xl mb-8">
@@ -228,7 +234,6 @@
             </div>
         </section>
 
-        <!-- 5. Pillars -->
         <section id="pillars" class="py-24 px-4 sm:px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -256,7 +261,6 @@
             </div>
         </section>
 
-        <!-- 6. Coaching & Delivery -->
         <section class="py-24 px-4 sm:px-6">
             <div class="max-w-6xl mx-auto">
                 <div class="mb-16 text-center">
@@ -290,7 +294,6 @@
             </div>
         </section>
         
-        <!-- Arrow Animation -->
         <div class="pb-12 text-center">
             <button onclick="openModal()" class="inline-block p-5 rounded-full glass-card hover:bg-white/10 transition duration-300 group animate-arrow">
                 <svg class="w-8 h-8 text-brand-olive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
@@ -299,7 +302,6 @@
             </button>
         </div>
 
-        <!-- 7. Final CTA -->
         <section id="signup" class="py-32 px-4 sm:px-6">
             <div class="max-w-4xl mx-auto glass-card rounded-[3rem] p-12 sm:p-20 text-center relative overflow-hidden">
                 <div class="absolute -top-24 -left-24 w-64 h-64 bg-brand-olive/20 blur-[80px] rounded-full"></div>
@@ -321,7 +323,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="p-16 bg-black/50 backdrop-blur-md border-t border-white/10">
         <div class="max-w-4xl mx-auto text-center">
             <p class="text-[10px] mb-8 leading-relaxed text-neutral-500 uppercase tracking-widest">
@@ -338,7 +339,6 @@
         </div>
     </footer>
 
-    <!-- MODAL -->
     <div id="comingSoonModal" class="modal-overlay fixed inset-0 z-[100] items-center justify-center p-4" onclick="closeModalOnOverlay(event)">
         <div class="modal-inner max-w-lg w-full glass-card p-10 sm:p-14 rounded-[2rem] text-center relative shadow-2xl bg-black/90">
             
@@ -358,12 +358,18 @@
 
             <div class="pt-8 border-t border-white/10">
                 <p class="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-4">Want priority access?</p>
-                <a href="mailto:circularrootscoaching@gmail.com?subject=6-Week Foundations Waitlist" class="cta-button block w-full py-5 font-black text-sm uppercase tracking-widest rounded-xl transition shadow-lg shadow-brand-olive/20 text-center">
-                    JOIN THE WAITING LIST
-                </a>
+                
+                <form action="https://formbold.com/s/YOUR_FORM_ID_HERE" method="POST" class="space-y-4 text-left">
+                    <input type="text" name="name" placeholder="YOUR NAME" required class="w-full p-4 rounded-xl form-input font-bold uppercase text-[10px] tracking-widest">
+                    <input type="email" name="email" placeholder="YOUR EMAIL" required class="w-full p-4 rounded-xl form-input font-bold uppercase text-[10px] tracking-widest">
+                    <button type="submit" class="cta-button block w-full py-5 font-black text-sm uppercase tracking-widest rounded-xl transition shadow-lg shadow-brand-olive/20 text-center">
+                        JOIN THE WAITING LIST
+                    </button>
+                </form>
+
                 <p class="mt-4 text-[10px] font-bold text-neutral-600 uppercase tracking-widest leading-relaxed">
-                    Drop me an email with the subject <br>
-                    <span class="text-brand-olive italic">"Foundations Access"</span> <br>
+                    Drop your details above or email <br>
+                    <span class="text-brand-olive italic">circularrootscoaching@gmail.com</span> <br>
                     and you'll be the first to know when the next window opens.
                 </p>
             </div>
@@ -372,6 +378,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Personalization Script
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name');
+            if (name) {
+                const greetSpan = document.getElementById('personalized-greet');
+                if (greetSpan) greetSpan.textContent = "Hey " + name + ",";
+            }
+
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
