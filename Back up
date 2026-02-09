@@ -22,6 +22,15 @@
             scroll-padding-top: 5rem; 
             background-color: #0d0e0d; /* Slightly warmer black to match olive */
         }
+
+        /* NEW: Hero Fade In Animation */
+        @keyframes heroFade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-in {
+            animation: heroFade 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
         
         /* Glassmorphism Base Styles */
         .glass-card {
@@ -150,7 +159,7 @@
         </div>
     </header>
 
-    <section class="min-h-[90vh] flex flex-col items-start justify-center px-4 sm:px-6 py-20">
+    <section class="min-h-[90vh] flex flex-col items-start justify-center px-4 sm:px-6 py-20 hero-fade-in">
         <div class="max-w-6xl mx-auto w-full">
             <h1 class="text-6xl sm:text-7xl md:text-9xl font-black leading-[0.85] mb-10 uppercase max-w-5xl tracking-tighter">
                 <span id="personalized-greet">Actually</span> <span class="text-brand-olive">enjoy the process</span> of getting strong.
@@ -396,10 +405,13 @@
             const name = params.get('name');
             const accessType = params.get('access');
 
-            // 1. Personalization Logic
+            // 1. Personalization Logic with Strict Olive Highlighting
             if (name) {
                 const greetSpan = document.getElementById('personalized-greet');
-                if (greetSpan) greetSpan.textContent = "Hey " + name + ",";
+                if (greetSpan) {
+                    greetSpan.textContent = "Hey " + name + ", ready to";
+                    // Note: The HTML structure ensures "enjoy the process" follows this and remains olive.
+                }
                 
                 // Auto-fill form name if they click the modal later
                 const nameInput = document.getElementById('form-name');
