@@ -71,6 +71,8 @@
             box-shadow: 0 4px 15px rgba(96, 108, 56, 0.3);
             cursor: pointer;
             border: none;
+            display: inline-block;
+            text-align: center;
         }
         .cta-button:hover {
             transform: translateY(-3px) scale(1.02);
@@ -149,9 +151,9 @@
             </div>
             
             <div class="flex flex-col space-y-2">
-                <button onclick="openModal()" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-extrabold bg-brand-olive text-[#fefae0] rounded-lg hover:brightness-110 transition duration-150 shadow-lg shadow-black/40 text-nowrap">
+                <a href="#signup" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-extrabold bg-brand-olive text-[#fefae0] rounded-lg hover:brightness-110 transition duration-150 shadow-lg shadow-black/40 text-nowrap">
                     START TRAINING
-                </button>
+                </a>
                 <a href="#roadmap" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-bold bg-white/5 text-white rounded-lg border border-white/10 backdrop-blur-md hover:bg-white/15 transition duration-150">
                     THE PROGRAM
                 </a>
@@ -238,9 +240,9 @@
                     Most programs are so intense or random that you end up more sore than strong. We use a tiered system that covers all the bases—The Barbell, The Kettlebell, and The Finisher—ensuring you build <span class="font-bold uppercase tracking-wide">real-world strength</span> that actually lasts.
                 </p>
                 <div class="text-left">
-                    <button onclick="openModal()" class="cta-button inline-block px-10 py-5 font-extrabold text-lg uppercase rounded-xl tracking-tight">
+                    <a href="#signup" class="cta-button inline-block px-10 py-5 font-extrabold text-lg uppercase rounded-xl tracking-tight">
                         LET'S BUILD A FOUNDATION
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -306,11 +308,11 @@
         </section>
         
         <div class="pb-12 text-center">
-            <button onclick="openModal()" class="inline-block p-5 rounded-full glass-card hover:bg-white/10 transition duration-300 group animate-arrow">
+            <a href="#signup" class="inline-block p-5 rounded-full glass-card hover:bg-white/10 transition duration-300 group animate-arrow">
                 <svg class="w-8 h-8 text-brand-olive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-            </button>
+            </a>
         </div>
 
         <section id="signup" class="py-32 px-4 sm:px-6">
@@ -410,15 +412,13 @@
                 const greetSpan = document.getElementById('personalized-greet');
                 if (greetSpan) {
                     greetSpan.textContent = "Hey " + name + ", ready to";
-                    // Note: The HTML structure ensures "enjoy the process" follows this and remains olive.
                 }
                 
-                // Auto-fill form name if they click the modal later
                 const nameInput = document.getElementById('form-name');
                 if (nameInput) nameInput.value = name;
             }
 
-            // 2. Dynamic WhatsApp Logic (+447925116794)
+            // 2. Dynamic WhatsApp Logic
             const whatsappBtn = document.getElementById('whatsapp-link');
             if (whatsappBtn) {
                 let message = "";
@@ -436,7 +436,7 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // 4. Smooth Scrolling
+            // 4. Smooth Scrolling (Now handles all # links including CTA anchors)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const hash = this.getAttribute('href');
