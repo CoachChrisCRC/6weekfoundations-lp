@@ -45,18 +45,29 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Message Popup Styles (Matching Landing Page) */
+        /* Message Popup Styles */
         #wa-popup {
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
             transform: translateY(20px) scale(0.9);
             pointer-events: none;
             opacity: 0;
+            touch-action: pan-y; /* Allow vertical scroll but capture horizontal swipe */
         }
 
         #wa-popup.visible {
             opacity: 1;
             transform: translateY(0) scale(1);
             pointer-events: auto;
+        }
+
+        /* Swipe dismissal classes */
+        #wa-popup.swipe-right {
+            transform: translateX(120%) rotate(10deg);
+            opacity: 0;
+        }
+        #wa-popup.swipe-left {
+            transform: translateX(-120%) rotate(-10deg);
+            opacity: 0;
         }
 
         #wa-badge {
@@ -88,7 +99,7 @@
         </h1>
         
         <p class="text-xl text-neutral-400 font-light italic mb-10 leading-relaxed">
-            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit. Use the button below to send me a quick hello on WhatsApp so we can chat.
+            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. I’m going to personally look over your notes to make sure the program is the right fit. Send me a hello on WhatsApp so we can get your start date locked in.
         </p>
 
         <div class="mt-10 mb-10 p-6 sm:p-8 bg-brand-sage/5 border border-brand-sage/20 rounded-3xl text-left">
@@ -97,25 +108,12 @@
                 <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-sage leading-none">Pre-Program Prep</span>
             </div>
             
-            <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-white">Unlock your T-Spine for the Barbell</h3>
-            <p class="text-sm text-neutral-400 mb-8 leading-relaxed">
-                The 6-Week Foundations involves foundational lifting. If your upper back is tight, squats and presses will feel clunky. Start doing this tonight:
-            </p>
-            
+            <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-white">Unlock your T-Spine</h3>
             <div class="space-y-6">
                 <div class="relative pl-6 border-l-2 border-white/10">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-neutral-800 border-2 border-neutral-600 flex items-center justify-center text-[8px] font-bold text-neutral-400">1</div>
                     <h4 class="text-sm font-black uppercase text-white mb-2">The Bench Prayer Stretch</h4>
                     <p class="text-xs text-neutral-400 leading-relaxed">
-                        Kneel in front of a chair or bench. Place elbows on the edge, hands together behind your head. Sink your head between your arms and push your chest toward the floor.
-                    </p>
-                </div>
-
-                <div class="relative pl-6 border-l-2 border-brand-sage/30">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-sage border-2 border-brand-sage/50 flex items-center justify-center text-[8px] font-bold text-white">2</div>
-                    <h4 class="text-sm font-black uppercase text-white mb-2">The Exhale</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Hold for 3 deep breaths. On every exhale, try to sink 1cm deeper. This opens up the shoulders and upper back for a better "shelf" during squats.
+                        Kneel in front of a chair or bench. Place elbows on the edge, hands together. Sink your head between your arms and breathe. Hold for 3 deep exhales.
                     </p>
                 </div>
             </div>
@@ -130,14 +128,13 @@
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             
-            <div class="flex items-start space-x-3">
+            <div class="flex items-start space-x-3 text-left">
                 <div class="w-8 h-8 rounded-full bg-brand-sage flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-tighter">
                     CC
                 </div>
-                <div class="text-left">
+                <div>
                     <p class="text-black text-xs font-bold leading-tight mb-1">Coach Chris</p>
-                    <p id="popup-text" class="text-neutral-600 text-[11px] leading-relaxed">
-                        </p>
+                    <p id="popup-text" class="text-neutral-600 text-[11px] leading-relaxed"></p>
                 </div>
             </div>
             <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white"></div>
@@ -160,53 +157,75 @@
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
             
+            // Name Personalization
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
-            
-            if (firstName) {
-                userNameEl.textContent = firstName;
-            } else {
-                nameWrapper.style.display = 'none'; 
-            }
+            if (firstName) { userNameEl.textContent = firstName; } else { nameWrapper.style.display = 'none'; }
 
+            // Popup Text Personalization
             const popupText = document.getElementById('popup-text');
-            if (firstName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your app. Shoot me a quick message here so we can get your start date locked in. — Chris`;
-            } else {
-                popupText.textContent = `Application received! Shoot me a quick message here so we can chat about the next steps and get you started. — Chris`;
-            }
+            popupText.textContent = firstName 
+                ? `Nice one, ${firstName}! I've got your app. Shoot me a quick message here so we can get your start date locked in. — Chris`
+                : `Application received! Shoot me a quick message here so we can chat about the next steps. — Chris`;
 
+            // WhatsApp Link Logic
             const waLink = document.getElementById('wa-dynamic-link');
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            const message = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
+            const message = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps.`;
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
+            // UI Elements
             const popup = document.getElementById('wa-popup');
             const badge = document.getElementById('wa-badge');
             const closeBtn = document.getElementById('close-wa');
             let triggered = false;
             let manuallyClosed = false;
 
-            const handleScroll = () => {
+            // Trigger on Scroll
+            window.addEventListener('scroll', () => {
                 if (triggered || manuallyClosed) return;
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPos = window.scrollY;
-                const scrollPercentage = (scrollPos / scrollHeight) * 100;
-
+                const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
                 if (scrollPercentage >= 30) {
                     popup.classList.add('visible');
                     badge.classList.add('active');
                     triggered = true;
                 }
-            };
+            });
 
+            // Manual Close Button
             closeBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 popup.classList.remove('visible');
                 manuallyClosed = true;
             });
 
-            window.addEventListener('scroll', handleScroll);
+            // --- SWIPE LOGIC ---
+            let touchStartX = 0;
+            let touchStartY = 0;
+            const swipeThreshold = 50;
+
+            popup.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            popup.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                // Ensure horizontal swipe is dominant
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX > swipeThreshold) {
+                        popup.classList.add('swipe-right');
+                        manuallyClosed = true;
+                    } else if (diffX < -swipeThreshold) {
+                        popup.classList.add('swipe-left');
+                        manuallyClosed = true;
+                    }
+                }
+            }, { passive: true });
         });
     </script>
 </body>
