@@ -120,6 +120,35 @@
             animation: pulse-arrow 1.4s infinite ease-in-out;
         }
 
+        /* --- Slider Styling --- */
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .testimonial-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 45%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 31%;
+            }
+        }
+
         /* Chat Pop-up Animation */
         #whatsapp-popup {
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
@@ -370,14 +399,18 @@
 
         <section id="results" class="py-24 px-4 sm:px-6 reveal border-t border-white/5">
             <div class="max-w-6xl mx-auto">
-                <div class="mb-12 text-center md:text-left">
+                <div class="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
                     <p class="text-xl italic text-neutral-300 border-l-2 border-brand-olive pl-6 max-w-2xl leading-relaxed">
                         "I've spent years helping clients bridge the gap between 'just exercising' and 'true training.' Here is the standard of results you can expect."
                     </p>
+                    <div class="hidden md:flex items-center space-x-2 text-brand-olive font-black uppercase text-[10px] tracking-widest">
+                        <span>Scroll to explore</span>
+                        <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                <div class="testimonial-slider pb-8">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
                         <div class="mb-6">
                             <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
                             <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Mastered Technical Lifting</h5>
@@ -392,7 +425,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
                         <div class="mb-6">
                             <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
                             <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Surpassed Strength Goals</h5>
@@ -407,7 +440,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
                         <div class="mb-6">
                             <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
                             <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Functional Balance & Form</h5>
@@ -422,7 +455,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card p-10 rounded-3xl border border-white/5 flex flex-col lg:hidden xl:flex">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
                         <div class="mb-6">
                             <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
                             <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">High-Performance Refinement</h5>
@@ -437,7 +470,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card p-10 rounded-3xl border border-white/5 flex flex-col lg:hidden xl:flex">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
                         <div class="mb-6">
                             <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
                             <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Smart, Structured Progress</h5>
@@ -451,6 +484,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="flex justify-center md:hidden space-x-2 mt-4 opacity-50">
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand-olive"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
                 </div>
             </div>
         </section>
