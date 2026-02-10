@@ -81,7 +81,7 @@
         </h1>
         
         <p class="text-xl text-neutral-400 font-light italic mb-10 leading-relaxed">
-            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit for your goals and setup. I’ll shoot you a text shortly to chat about the next steps.
+            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit for your goals and setup. Drop me a message on WhatsApp and I'll get back to you shortly to chat about the next steps.
         </p>
 
         <div class="mt-10 mb-10 p-6 sm:p-8 bg-brand-sage/5 border border-brand-sage/20 rounded-3xl text-left">
@@ -172,14 +172,14 @@
 
             const popupText = document.getElementById('popup-text');
             if (firstName) {
-                popupText.textContent = `Nice work, ${firstName}! Message me to say hi or ask about the equipment list.`;
+                popupText.textContent = `Hey ${firstName}! Message me here to chat about the next steps.`;
             } else {
-                popupText.textContent = `Application in! Message me to say hi or ask about the equipment list.`;
+                popupText.textContent = `Application in! Message me here to chat about the next steps.`;
             }
 
             const waLink = document.getElementById('wa-dynamic-link');
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            const message = `Hey Chris! ${waIntro}I've just applied for the 6-Week Foundations Program. I'm checking in to say hello—also, what's that equipment list you mentioned?`;
+            const message = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
             const popup = document.getElementById('wa-popup');
