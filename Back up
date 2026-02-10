@@ -277,6 +277,37 @@
             </a>
         </div>
 
+        <section id="coach" class="py-24 px-4 sm:px-6 border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-brand-olive/20 rounded-[2rem] blur-xl group-hover:bg-brand-olive/30 transition duration-500"></div>
+                        <div class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800" alt="Coach Chris" class="w-full grayscale hover:grayscale-0 transition duration-700 object-cover aspect-[4/5] scale-105 group-hover:scale-100">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-brand-olive font-black tracking-[.3em] uppercase text-xs mb-4">THE ARCHITECT</div>
+                        <h2 class="text-5xl sm:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">Meet Coach <span class="text-brand-olive">Chris.</span></h2>
+                        <div class="space-y-6 text-neutral-400 text-lg leading-relaxed italic">
+                            <p>"Let’s be honest: I’m probably not your typical PT. If you’re chasing a gold medal or want to step onto a bodybuilding stage, I’m likely not your guy. But if you’re an everyday person who just wants to feel <span class="text-white font-bold">notably fitter, stronger, and better</span> than you did yesterday—without the gym-head ego—then we’re going to get along just fine."</p>
+                            <p>"I founded Circular Roots because I was tired of seeing people ‘just exercising’ but getting nowhere. I don't want to just hand you a workout and walk away; I want to <span class="text-brand-olive font-bold uppercase tracking-tight">teach you how your body actually works</span>."</p>
+                            <p>"My approach is a bit like a ‘Body Software’ update: we strip back the noise and build your strength from the ground up using smart, simple principles. No confusing jargon, no guesswork—just a supportive roadmap and a solid foundation so you can move with confidence for the long haul. Let’s get to work."</p>
+                            <div class="pt-8 mt-8 border-t border-white/10">
+                                <p class="text-white font-black uppercase tracking-widest text-[10px] mb-4 opacity-50">Experience & Focus:</p>
+                                <ul class="grid grid-cols-2 gap-y-4 text-[11px] font-bold uppercase tracking-widest text-brand-olive">
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Movement Architecture</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Sustainable Strength</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> 10+ Years Coaching</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Newcastle Upon Tyne</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="signup" class="py-32 px-4 sm:px-6">
             <div class="max-w-4xl mx-auto glass-card rounded-[3rem] p-12 sm:p-20 text-center relative overflow-hidden">
                 <div class="absolute -top-24 -left-24 w-64 h-64 bg-brand-olive/20 blur-[80px] rounded-full"></div>
