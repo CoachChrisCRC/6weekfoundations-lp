@@ -140,8 +140,17 @@
     </div>
 
     <div class="fixed bottom-6 right-6 z-[100] whatsapp-bounce flex flex-col items-end">
-        <div id="wa-popup" class="mb-4 mr-2 bg-white text-black text-[10px] font-bold uppercase px-4 py-3 rounded-2xl shadow-2xl relative max-w-[200px] text-center leading-tight tracking-wider">
-            <span id="popup-text"></span>
+        <div id="wa-popup" class="mb-4 mr-2 bg-white rounded-2xl shadow-2xl p-4 max-w-[240px] relative pointer-events-none">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-full bg-brand-sage/20 flex items-center justify-center overflow-hidden border border-brand-sage/30">
+                    <svg class="w-5 h-5 text-brand-sage" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-black leading-none">Coach Chris</span>
+                    <span class="text-[8px] text-neutral-400 font-bold uppercase tracking-widest">Active Now</span>
+                </div>
+            </div>
+            <p id="popup-text" class="text-xs text-neutral-800 leading-snug font-medium pr-2"></p>
             <div class="absolute -bottom-2 right-6 w-4 h-4 bg-white rotate-45"></div>
         </div>
 
@@ -172,9 +181,9 @@
 
             const popupText = document.getElementById('popup-text');
             if (firstName) {
-                popupText.textContent = `Hey ${firstName}! Message me here to chat about the next steps.`;
+                popupText.textContent = `Hey ${firstName}, great to have you! Tap here to send me a quick hello and we can chat about the next steps.`;
             } else {
-                popupText.textContent = `Application in! Message me here to chat about the next steps.`;
+                popupText.textContent = `Great to have you! Tap here to send me a quick hello and we can chat about the next steps.`;
             }
 
             const waLink = document.getElementById('wa-dynamic-link');
