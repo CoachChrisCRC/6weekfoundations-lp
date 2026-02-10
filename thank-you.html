@@ -162,7 +162,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            // Tally should pass 'first_name' in the redirect URL
             const firstName = params.get('first_name');
             
             // 1. Personalization
@@ -186,7 +185,8 @@
             // 3. WhatsApp Message
             const waLink = document.getElementById('wa-dynamic-link');
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            const message = `Hey Chris! ${waIntro}I've just applied for the 6-Week Foundations Program. Looking forward to hearing back!`;
+            // Expanded message to include the follow-on about the equipment list
+            const message = `Hey Chris! ${waIntro}I've just applied for the 6-Week Foundations Program. I'm checking in to say hello—also, what's that equipment list you mentioned?`;
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
             // 4. Scroll Trigger
