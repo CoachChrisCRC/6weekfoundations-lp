@@ -283,7 +283,7 @@
                     <div class="relative group">
                         <div class="absolute -inset-4 bg-brand-olive/20 rounded-[2rem] blur-xl group-hover:bg-brand-olive/30 transition duration-500"></div>
                         <div class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800" alt="Coach Chris" class="w-full grayscale hover:grayscale-0 transition duration-700 object-cover aspect-[4/5] scale-105 group-hover:scale-100">
+                            <img src="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg" alt="Coach Chris" class="w-full grayscale hover:grayscale-0 transition duration-700 object-cover aspect-[4/5] scale-105 group-hover:scale-100">
                         </div>
                     </div>
                     <div>
