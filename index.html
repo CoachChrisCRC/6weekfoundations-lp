@@ -113,11 +113,9 @@
             </div>
             
             <div class="flex flex-col space-y-2">
-                <button 
-                    data-tally-open="eqeBXl" data-tally-layout="modal" data-tally-hide-title="1" data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " data-tally-emoji-animation="heart-beat"
-                    class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-extrabold bg-brand-olive text-[#fefae0] rounded-lg hover:brightness-110 transition duration-150 shadow-lg shadow-black/40 text-nowrap block">
+                <a href="#signup" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-extrabold bg-brand-olive text-[#fefae0] rounded-lg hover:brightness-110 transition duration-150 shadow-lg shadow-black/40 text-nowrap block">
                     START TRAINING
-                </button>
+                </a>
                 <a href="#roadmap" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-bold bg-white/5 text-white rounded-lg border border-white/10 backdrop-blur-md hover:bg-white/15 transition duration-150">
                     THE PROGRAM
                 </a>
@@ -204,11 +202,9 @@
                     Most programs are so intense or random that you end up more sore than strong. We use a tiered system that covers all the bases—The Barbell, The Kettlebell, and The Finisher—ensuring you build <span class="font-bold uppercase tracking-wide">real-world strength</span> that actually lasts.
                 </p>
                 <div class="text-left">
-                    <button 
-                        data-tally-open="eqeBXl" data-tally-layout="modal" data-tally-hide-title="1" data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " data-tally-emoji-animation="heart-beat"
-                        class="cta-button px-10 py-5 font-extrabold text-lg uppercase rounded-xl tracking-tight">
+                    <a href="#signup" class="cta-button inline-block px-10 py-5 font-extrabold text-lg uppercase rounded-xl tracking-tight">
                         LET'S BUILD A FOUNDATION
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -292,11 +288,17 @@
                 <p class="text-xl italic mb-12 font-light text-neutral-400 leading-relaxed max-w-2xl mx-auto">
                     Take six weeks to graduate from the basics. Strength isn't just for the "fitness obsessed"—it's for anyone who wants to move better and live better.
                 </p>
+                
                 <button 
-                    data-tally-open="eqeBXl" data-tally-layout="modal" data-tally-hide-title="1" data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " data-tally-emoji-animation="heart-beat"
-                    class="cta-button inline-block px-14 py-6 font-black text-2xl uppercase tracking-tighter rounded-2xl">
+                    data-tally-open="eqeBXl" 
+                    data-tally-layout="modal" 
+                    data-tally-hide-title="1" 
+                    data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " 
+                    data-tally-emoji-animation="heart-beat"
+                    class="cta-button px-14 py-6 font-black text-2xl uppercase tracking-tighter rounded-2xl">
                     JOIN THE 6-WEEK PROGRAM
                 </button>
+
                 <p class="mt-10 text-[10px] font-black uppercase text-neutral-500 tracking-[0.3em]">
                     Limited Coaching Intake Slots Available.
                 </p>
@@ -307,7 +309,7 @@
     <footer class="p-16 bg-black/50 backdrop-blur-md border-t border-white/10">
         <div class="max-w-4xl mx-auto text-center">
             <p class="text-[10px] mb-8 leading-relaxed text-neutral-500 uppercase tracking-widest">
-                General Fitness Disclaimer: Always consult your medical professional or doctor before you begin any fitness regime. You engage in physical activity at your own risk.
+                General Fitness Disclaimer: Always consult your medical professional or doctor before you begin any fitness regime or make changes to your diet. This site provides general information for educational purposes only and is not intended to diagnose or treat any medical condition. You engage in physical activity at your own risk.
             </p>
             <p class="text-sm font-black text-white mb-2 tracking-tight">
                 &copy; <span id="current-year">2026</span> COACH CHRIS | CIRCULAR ROOTS COACHING | TRAIN UNCNVNTNL.
@@ -353,12 +355,9 @@
 
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    const hash = this.getAttribute('href');
-                    if (hash.startsWith('#')) {
-                        e.preventDefault();
-                        const target = document.querySelector(hash);
-                        if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
                 });
             });
         });
