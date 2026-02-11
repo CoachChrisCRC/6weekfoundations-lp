@@ -190,8 +190,13 @@
 
             const waLink = document.getElementById('wa-dynamic-link');
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            const message = `Hey Chris! ${waIntro}I've just finished the application for the 6-Week Foundations. Could you send over the Macro and 1RM Calculators we discussed?`;
-            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
+            const originalMessage = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
+            const calculatorRequest = `Could you send over the Macro and 1RM Calculators we discussed?`;
+            
+            // Combine with a newline (%0A)
+            const fullMessage = `${originalMessage}\n\n${calculatorRequest}`;
+            
+            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
 
             const popup = document.getElementById('wa-popup');
             const badge = document.getElementById('wa-badge');
