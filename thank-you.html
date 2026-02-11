@@ -246,13 +246,12 @@
 
                 if (scrollPercentage >= 75) {
                     triggered = true;
-                    // 1.5 second delay before popping up
                     setTimeout(() => {
                         if (!manuallyClosed) {
                             popup.classList.add('visible');
                             badge.classList.add('active');
                         }
-                    }, 1500);
+                    }, 5000);
                 }
             };
 
