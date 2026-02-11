@@ -24,6 +24,7 @@
             --brand-olive: #606c38;
             --brand-olive-light: #a3b18a;
             --brand-olive-glow: rgba(96, 108, 56, 0.2);
+            --brand-sage: #a3b18a;
         }
 
         body {
@@ -183,6 +184,12 @@
             opacity: 1;
             transform: scale(1);
         }
+
+        /* WhatsApp Glow Border Effect */
+        .whatsapp-glow {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 20px rgba(163, 177, 138, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body class="text-white antialiased">
@@ -337,6 +344,48 @@
                         <p class="text-sm text-brand-olive font-bold uppercase tracking-widest mb-6">Phase: Real-world Resilience</p>
                         <p class="text-lg text-neutral-400 leading-relaxed mb-6">Controlled bodyweight work and core conditioning. We wrap up every session by reinforcing your movement habits so you leave feeling solid and capable, not just "beaten up."</p>
                         <div class="mt-auto pt-6 border-t border-white/10 text-[10px] font-black uppercase tracking-widest text-neutral-500">Primary Goal: Engine & Core</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipment" class="py-24 px-4 sm:px-6 reveal bg-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter mb-6">Equipment <span class="text-brand-olive">& Kit.</span></h2>
+                        <p class="text-xl text-neutral-300 italic mb-10 leading-relaxed border-l-2 border-brand-olive pl-6">
+                            To get the most out of Foundations, you'll need access to a standard gym or a well-equipped home setup. We focus on tools that build maximum leverage.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M21,11H19V9A1,1,0,0,0,17,9V11H7V9A1,1,0,0,0,5,9V11H3a1,1,0,0,0,0,2H5v2a1,1,0,0,0,2,0V13H17v2a1,1,0,0,0,2,0V13h2a1,1,0,0,0,0-2Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Olympic Barbell & Plates</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A5,5,0,0,0,7,7V9.18a7,7,0,1,0,10,0V7A5,5,0,0,0,12,2Zm3,7H9V7a3,3,0,0,1,6,0Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Kettlebell Set</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M19,2H17V4H7V2H5V22H7V20H17v2h2ZM17,18H7V15H17Zm0-5H7V10H17ZM17,8H7V6H17Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Squat Rack / Stand</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M21,16H3a1,1,0,0,1-1-1V10A1,1,0,0,1,3,9H21a1,1,0,0,1,1,1v5A1,1,0,0,1,21,16ZM4,14H20V11H4Zm1,4a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Zm12,0a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Flat Weight Bench</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl border-brand-olive/20">
+                        <h3 class="text-xl font-black uppercase tracking-tight mb-4">No gym access?</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                            If you're training exclusively with bodyweight or limited dumbbells, this specific roadmap might not be the best fit right now. 
+                        </p>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6 font-bold italic">
+                            Message me via the WhatsApp link below and I can suggest a modified track or a different program better suited to your current kit.
+                        </p>
+                        <div class="w-full h-px bg-white/10 mb-6"></div>
+                        <p class="text-[10px] font-black uppercase text-brand-olive tracking-[0.2em]">Required: 3 Sessions Per Week</p>
                     </div>
                 </div>
             </div>
@@ -557,29 +606,50 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-12">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                             </div>
-                            <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Full 6-Week Strategy</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Full 6-Week Strategy</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">A roadmap from technique to peak strength.</span>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                             </div>
-                            <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Active Form Review</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Active Form Review</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">Personal technical analysis of your lifts.</span>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                             </div>
-                            <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">The Circular Roots App</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">The Circular Roots App</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">All programming & video demos in one place.</span>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                             </div>
-                            <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Direct Messaging Access</span>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Direct Messaging Access</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">A coach in your pocket for daily guidance.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 md:col-span-2">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Customised Nutrition Guidelines</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">Personalised targets and habit support—no restrictive diets.</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -646,7 +716,7 @@
             </button>
             
             <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-full bg-brand-olive flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-tighter">
+                <div class="w-8 h-8 rounded-full bg-[#a3b18a] flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-tighter">
                     CC
                 </div>
                 <div>
@@ -660,10 +730,10 @@
         </div>
 
         <a id="whatsapp-link" href="#" target="_blank" class="flex items-center group relative">
-            <div id="whatsapp-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-white text-brand-olive rounded-full flex items-center justify-center text-[10px] font-black shadow-lg z-10 border border-brand-olive/20">1</div>
+            <div id="whatsapp-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-white text-[#a3b18a] rounded-full flex items-center justify-center text-[10px] font-black shadow-lg z-10 border border-[#a3b18a]/20">1</div>
             
-            <div class="w-14 h-14 bg-brand-olive rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 relative">
-                <div class="absolute inset-0 rounded-full bg-brand-olive animate-ping opacity-30"></div>
+            <div class="w-14 h-14 bg-[#a3b18a] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 relative whatsapp-glow">
+                <div class="absolute inset-0 rounded-full bg-[#a3b18a] animate-ping opacity-30"></div>
                 <svg class="w-8 h-8 text-[#fefae0]" fill="currentColor" viewBox="0 0 448 512">
                     <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.2-3.2-5.6-.3-8.6 2.4-11.3 2.5-2.4 5.6-6.5 8.3-9.8 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7.9-6.9-.5-9.8-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.5 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
                 </svg>
