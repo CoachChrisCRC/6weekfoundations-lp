@@ -684,6 +684,7 @@
                     data-tally-hide-title="1" 
                     data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " 
                     data-tally-emoji-animation="heart-beat"
+                    data-tally-hidden-fields="name=personalized_name"
                     class="cta-button px-14 py-6 font-black text-2xl uppercase tracking-tighter rounded-2xl">
                     JOIN THE 6-WEEK PROGRAM
                 </button>
@@ -759,9 +760,16 @@
             const name = params.get('name');
             const accessType = params.get('access');
 
+            // Set Name for Landing Page Greeting
             if (name) {
                 const greetSpan = document.getElementById('personalized-greet');
                 if (greetSpan) greetSpan.textContent = "Hey " + name + ", ready to";
+                
+                // Pass Name to Tally Hidden Field
+                const tallyBtn = document.querySelector('[data-tally-open="eqeBXl"]');
+                if (tallyBtn) {
+                    tallyBtn.setAttribute('data-tally-hidden-fields', `name=${name}`);
+                }
             }
 
             // WhatsApp Message Logic
@@ -819,7 +827,6 @@
                 if (!swiped) {
                     whatsappPopup.classList.remove('visible');
                 }
-                // Badge remains active/visible as per request
             };
 
             closeWhatsapp.addEventListener('click', (e) => {
