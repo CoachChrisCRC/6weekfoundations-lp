@@ -204,13 +204,6 @@
             let triggered = false;
             let manuallyClosed = false;
 
-            const showPopup = () => {
-                if (triggered || manuallyClosed) return;
-                popup.classList.add('visible');
-                badge.classList.add('active');
-                triggered = true;
-            };
-
             const dismissPopup = (swiped = false) => {
                 manuallyClosed = true;
                 if (!swiped) {
@@ -251,13 +244,17 @@
                 const scrollPos = window.scrollY;
                 const scrollPercentage = (scrollPos / scrollHeight) * 100;
 
-                if (scrollPercentage >= 60) {
-                    showPopup();
+                if (scrollPercentage >= 75) {
+                    triggered = true;
+                    // 1.5 second delay before popping up
+                    setTimeout(() => {
+                        if (!manuallyClosed) {
+                            popup.classList.add('visible');
+                            badge.classList.add('active');
+                        }
+                    }, 1500);
                 }
             };
-
-            // Timed Delay Backup (4 seconds)
-            setTimeout(showPopup, 4000);
 
             closeBtn.addEventListener('click', (e) => {
                 e.preventDefault();
