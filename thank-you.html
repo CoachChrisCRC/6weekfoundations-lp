@@ -127,7 +127,7 @@
                     <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-sage border-2 border-brand-sage/50 flex items-center justify-center text-[8px] font-bold text-white">2</div>
                     <h4 class="text-sm font-black uppercase text-white mb-2">Audit Your Numbers</h4>
                     <p class="text-xs text-neutral-400 leading-relaxed">
-                        Knowledge is power. Before we start, you need a rough baseline for your 1-Rep Maxes and your daily Calorie/Macro targets. <strong>Ask me for my Calculators in your WhatsApp message</strong> and I'll send them over to get you started.
+                        Knowledge is power. Before we start, you need a rough baseline for your 1-Rep Maxes and your daily Calorie/Macro targets. If fat loss is your primary goal, you may also benefit from our estimated BF% Calculator. <strong>Ask me for my Calculators in your WhatsApp message</strong> and I'll send them over to get you started.
                     </p>
                 </div>
             </div>
@@ -190,11 +190,11 @@
 
             const waLink = document.getElementById('wa-dynamic-link');
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            const originalMessage = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
-            const calculatorRequest = `Could you send over the Macro and 1RM Calculators we discussed?`;
             
-            // Combine with a newline (%0A)
-            const fullMessage = `${originalMessage}\n\n${calculatorRequest}`;
+            const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
+            const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
+            
+            const fullMessage = `${messagePart1}\n\n${messagePart2}`;
             
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
 
