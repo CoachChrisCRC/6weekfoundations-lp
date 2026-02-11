@@ -240,11 +240,12 @@
 
             const handleScroll = () => {
                 if (triggered || manuallyClosed) return;
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPos = window.scrollY;
-                const scrollPercentage = (scrollPos / scrollHeight) * 100;
+                
+                const scrollHeight = document.documentElement.scrollHeight;
+                const scrollPos = window.innerHeight + window.scrollY;
 
-                if (scrollPercentage >= 30) {
+                // Triggers when within 10px of the bottom
+                if (scrollHeight - scrollPos <= 10) {
                     popup.classList.add('visible');
                     badge.classList.add('active');
                     triggered = true;
