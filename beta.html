@@ -30,17 +30,6 @@
             z-index: -1;
             filter: blur(60px);
         }
-
-        /* Subtle Glow Animation for the Hero Icon */
-        .hero-glow {
-            box-shadow: 0 0 20px rgba(135, 174, 115, 0.2);
-            animation: soft-glow 3s ease-in-out infinite;
-        }
-
-        @keyframes soft-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(135, 174, 115, 0.2); transform: scale(1); }
-            50% { box-shadow: 0 0 40px rgba(135, 174, 115, 0.4); transform: scale(1.02); }
-        }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -89,6 +78,11 @@
             opacity: 1;
             transform: scale(1);
         }
+
+        /* Subtle Glow for Success Icon */
+        .icon-glow {
+            filter: drop-shadow(0 0 12px rgba(135, 174, 115, 0.4)) drop-shadow(0 0 2px rgba(135, 174, 115, 0.6));
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4 py-12 sm:py-20">
@@ -97,9 +91,9 @@
     <div class="bg-blob bottom-[10%] right-[-5%]" style="background: radial-gradient(circle, rgba(135, 174, 115, 0.1) 0%, rgba(0, 0, 0, 0) 70%);"></div>
 
     <div class="max-w-2xl w-full glass-card p-8 sm:p-16 rounded-[3rem] text-center animate-fade">
-        <div class="inline-flex items-center justify-center w-24 h-24 bg-brand-sage/10 rounded-full mb-8 hero-glow border border-brand-sage/30">
-            <svg class="w-12 h-12 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-brand-sage/10 border border-brand-sage/20 rounded-full mb-8 icon-glow">
+            <svg class="w-10 h-10 text-brand-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
             </svg>
         </div>
 
