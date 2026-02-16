@@ -158,6 +158,10 @@
             opacity: 0;
             user-select: none;
             will-change: transform, opacity;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            /* REMOVED BORDER PROPERTY HERE TO MATCH FUNDAMENTALS */
         }
         #whatsapp-popup.visible {
             opacity: 1;
@@ -720,23 +724,23 @@
     </footer>
 
     <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-        <div id="whatsapp-popup" class="mb-4 mr-2 bg-white rounded-2xl p-4 shadow-2xl max-w-[280px] origin-bottom-right relative touch-none">
+        <div id="whatsapp-popup" class="mb-4 mr-2 rounded-2xl p-4 shadow-2xl max-w-[280px] origin-bottom-right relative touch-none">
             <button id="close-whatsapp" class="absolute -top-2 -left-2 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center hover:bg-neutral-800 transition shadow-lg z-10">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             
             <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-full bg-[#a3b18a] flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-tighter">
-                    CC
+                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-brand-sage/50">
+                    <img src="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg" class="w-full h-full object-cover">
                 </div>
                 <div>
-                    <p class="text-black text-xs font-bold leading-tight mb-1">Coach Chris</p>
-                    <p class="text-neutral-600 text-[11px] leading-relaxed">
+                    <p class="text-brand-sage text-[10px] font-black uppercase tracking-widest mb-1">Coach Chris</p>
+                    <p class="text-neutral-200 text-[11px] leading-relaxed italic">
                         Hey! Quick question about the equipment or the schedule? Happy to help you figure out if this is the right fit. — Chris
                     </p>
                 </div>
             </div>
-            <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white bubble-tip"></div>
+            <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white/10 backdrop-blur-md"></div>
         </div>
 
         <a id="whatsapp-link" href="#" target="_blank" class="flex items-center group relative">
@@ -829,7 +833,6 @@
                 if (!swiped) {
                     whatsappPopup.classList.remove('visible');
                 }
-                // Badge remains active/visible as per request
             };
 
             closeWhatsapp.addEventListener('click', (e) => {
