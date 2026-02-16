@@ -96,7 +96,7 @@
         </h1>
         
         <p class="text-xl text-neutral-400 font-light italic mb-10 leading-relaxed">
-            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit. Use the button below to send me a quick hello on WhatsApp so we can chat.
+            I’ve got your details<span id="nameWrapper" style="display: none;">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit. Use the button below to send me a quick hello on WhatsApp so we can chat.
         </p>
 
         <div class="mt-10 mb-10 p-6 sm:p-8 bg-brand-sage/5 border border-brand-sage/20 rounded-3xl text-left">
@@ -106,25 +106,17 @@
             </div>
             
             <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-white">Prime Your Body for Performance</h3>
-            <p class="text-sm text-neutral-400 mb-8 leading-relaxed">
-                Foundations is built on compound strength. To hit your sessions with intent, start integrating these two steps immediately:
-            </p>
-            
             <div class="space-y-6">
                 <div class="relative pl-6 border-l-2 border-white/10">
                     <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-neutral-800 border-2 border-neutral-600 flex items-center justify-center text-[8px] font-bold text-neutral-400">1</div>
                     <h4 class="text-sm font-black uppercase text-white mb-2">The "World's Greatest Stretch"</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        The ultimate drill for full-body mobility. Step into a deep lunge, place your inside elbow to the floor, then rotate that same hand toward the ceiling. It opens the hips, T-spine, and ankles—essential for deep squats and heavy presses.
-                    </p>
+                    <p class="text-xs text-neutral-400 leading-relaxed">The ultimate drill for full-body mobility. It opens the hips, T-spine, and ankles—essential for deep squats and heavy presses.</p>
                 </div>
 
                 <div class="relative pl-6 border-l-2 border-brand-sage/30">
                     <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-sage border-2 border-brand-sage/50 flex items-center justify-center text-[8px] font-bold text-white">2</div>
                     <h4 class="text-sm font-black uppercase text-white mb-2">Audit Your Numbers</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Knowledge is power. Before we start, you need a rough baseline for your 1-Rep Maxes and your daily Calorie/Macro targets. If fat loss is your primary goal, you may also benefit from our estimated BF% Calculator. <strong>Ask me for my Calculators in your WhatsApp message</strong> and I'll send them over to get you started.
-                    </p>
+                    <p class="text-xs text-neutral-400 leading-relaxed">Before we start, you need a baseline for your 1-Rep Maxes and daily targets. <strong>Ask me for my Calculators in your WhatsApp message</strong> and I'll send them over.</p>
                 </div>
             </div>
         </div>
@@ -144,8 +136,7 @@
                 </div>
                 <div class="text-left">
                     <p class="text-brand-sage text-[10px] font-black uppercase tracking-widest mb-1">Coach Chris</p>
-                    <p id="popup-text" class="text-neutral-300 text-[11px] leading-relaxed font-medium">
-                        </p>
+                    <p id="popup-text" class="text-neutral-300 text-[11px] leading-relaxed font-medium"></p>
                 </div>
             </div>
             <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-sage/20"></div>
@@ -153,7 +144,6 @@
 
         <a id="wa-dynamic-link" href="#" target="_blank" class="flex items-center group relative whatsapp-bounce">
             <div id="wa-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-white text-brand-sage rounded-full flex items-center justify-center text-[10px] font-black shadow-lg z-10 border border-brand-sage/20">1</div>
-            
             <div class="w-16 h-16 bg-brand-sage rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 relative">
                 <div class="absolute inset-0 rounded-full bg-brand-sage animate-ping opacity-30"></div>
                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 448 512">
@@ -167,28 +157,28 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
+            const hasName = firstName && firstName.trim() !== "";
             
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
             const popupText = document.getElementById('popup-text');
             const waLink = document.getElementById('wa-dynamic-link');
 
-            // Set main body personalization
-            if (firstName && firstName.trim() !== "") {
+            // 1. Logic for Hero Text
+            if (hasName) {
                 userNameEl.textContent = firstName;
-            } else {
-                nameWrapper.style.display = 'none'; 
+                nameWrapper.style.display = 'inline'; 
             }
 
-            // Set Popup Text (Your original version with name logic)
-            if (firstName && firstName.trim() !== "") {
+            // 2. Logic for Popup Message
+            if (hasName) {
                 popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too — Chris`;
             } else {
                 popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) & any questions you have, then we can chat about next steps. — Chris`;
             }
 
-            // Set WhatsApp Link personalization
-            const waIntro = firstName ? `It's ${firstName}. ` : "";
+            // 3. Logic for Outbound WhatsApp URL
+            const waIntro = hasName ? `It's ${firstName}. ` : "";
             const message = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.\n\nCould you also send over the Calculators you mentioned for getting started?`;
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
@@ -200,8 +190,7 @@
 
             const handleScroll = () => {
                 if (triggered || manuallyClosed) return;
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPercentage = (window.scrollY / (scrollHeight || 1)) * 100;
+                const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
 
                 if (scrollPercentage >= 75) {
                     triggered = true;
