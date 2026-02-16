@@ -172,17 +172,17 @@
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
             
-            if (firstName) {
+            if (firstName && firstName.trim() !== "") {
                 userNameEl.textContent = firstName;
             } else {
                 nameWrapper.style.display = 'none'; 
             }
 
             const popupText = document.getElementById('popup-text');
-            if (firstName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too, then wen we can chat about next steps — Chris`;
+            if (firstName && firstName.trim() !== "") {
+                popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
             } else {
-                popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too, then wen we can chat about next steps — Chris`;
+                popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
             }
 
             const waLink = document.getElementById('wa-dynamic-link');
