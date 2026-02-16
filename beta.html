@@ -97,7 +97,7 @@
         </h1>
         
         <p class="text-xl text-neutral-400 font-light italic mb-10 leading-relaxed">
-            I’ve got your details<span id="nameWrapper" style="display: none;">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit. Use the button below to send me a quick hello on WhatsApp so we can chat.
+            I’ve got your details<span id="nameWrapper">, <span id="userName" class="text-white font-bold"></span></span>. Because I work closely with everyone in this 6-week block, I’m going to personally look over your notes to make sure the program is the right fit. Use the button below to send me a quick hello on WhatsApp so we can chat.
         </p>
 
         <div class="mt-10 mb-10 p-6 sm:p-8 bg-brand-sage/5 border border-brand-sage/20 rounded-3xl text-left">
@@ -168,32 +168,29 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
-            const hasName = firstName && firstName.trim() !== "";
             
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
-            const popupText = document.getElementById('popup-text');
-            const waLink = document.getElementById('wa-dynamic-link');
-
-            // 1. Hero text personalization
-            if (hasName) {
+            
+            if (firstName) {
                 userNameEl.textContent = firstName;
-                nameWrapper.style.display = 'inline'; 
             } else {
                 nameWrapper.style.display = 'none'; 
             }
 
-            // 2. Popup message personalization
-            if (hasName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators so we can get your numbers locked in.`;
+            const popupText = document.getElementById('popup-text');
+            if (firstName) {
+                popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too, then wen we can chat about next steps — Chris`;
             } else {
-                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) and any questions you have.`;
+                popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too, then wen we can chat about next steps — Chris`;
             }
 
-            // 3. WhatsApp link and message personalization
-            const waIntro = hasName ? `It's ${firstName}. ` : "";
+            const waLink = document.getElementById('wa-dynamic-link');
+            const waIntro = firstName ? `It's ${firstName}. ` : "";
+            
             const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
             const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
+            
             const fullMessage = `${messagePart1}\n\n${messagePart2}`;
             
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
