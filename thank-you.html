@@ -45,7 +45,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Message Popup Styles (Matching Landing Page) */
+        /* Message Popup Styles (Matching Dark Glass Style) */
         #wa-popup {
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
             transform: translateY(20px) scale(0.9);
@@ -53,6 +53,10 @@
             opacity: 0;
             user-select: none;
             will-change: transform, opacity;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         #wa-popup.visible {
@@ -61,15 +65,8 @@
             pointer-events: auto;
         }
 
-        /* Swipe dismissal classes */
-        #wa-popup.swipe-right {
-            transform: translateX(120%) rotate(10deg);
-            opacity: 0;
-        }
-        #wa-popup.swipe-left {
-            transform: translateX(-120%) rotate(-10deg);
-            opacity: 0;
-        }
+        #wa-popup.swipe-right { transform: translateX(120%) rotate(10deg); opacity: 0; }
+        #wa-popup.swipe-left { transform: translateX(-120%) rotate(-10deg); opacity: 0; }
 
         #wa-badge {
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -137,22 +134,22 @@
     </div>
 
     <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-        <div id="wa-popup" class="mb-4 mr-2 bg-white rounded-2xl p-4 shadow-2xl max-w-[280px] relative touch-none">
-            <button id="close-wa" class="absolute -top-2 -left-2 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center hover:bg-neutral-800 transition shadow-lg z-10">
+        <div id="wa-popup" class="mb-4 mr-2 rounded-2xl p-4 shadow-2xl max-w-[280px] relative touch-none">
+            <button id="close-wa" class="absolute -top-2 -left-2 w-6 h-6 bg-brand-sage text-white rounded-full flex items-center justify-center hover:bg-white hover:text-brand-sage transition shadow-lg z-10 border border-brand-sage/20">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             
             <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-full bg-brand-sage flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-tighter">
-                    CC
+                <div class="w-10 h-10 rounded-full bg-neutral-800 flex-shrink-0 flex items-center justify-center border border-brand-sage/40 overflow-hidden shadow-inner">
+                    <img src="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/main/coachchrisbio.jpg" alt="Coach Chris" class="w-full h-full object-cover block">
                 </div>
                 <div class="text-left">
-                    <p class="text-black text-xs font-bold leading-tight mb-1">Coach Chris</p>
-                    <p id="popup-text" class="text-neutral-600 text-[11px] leading-relaxed">
+                    <p class="text-brand-sage text-[10px] font-black uppercase tracking-widest mb-1">Coach Chris</p>
+                    <p id="popup-text" class="text-neutral-300 text-[11px] leading-relaxed font-medium">
                         </p>
                 </div>
             </div>
-            <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white"></div>
+            <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-sage/20"></div>
         </div>
 
         <a id="wa-dynamic-link" href="#" target="_blank" class="flex items-center group relative whatsapp-bounce">
@@ -183,9 +180,9 @@
 
             const popupText = document.getElementById('popup-text');
             if (firstName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too — Chris`;
+                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators so we can get your numbers locked in.`;
             } else {
-                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) & any questions you have, then we can chat about next steps. — Chris`;
+                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) and any questions you have.`;
             }
 
             const waLink = document.getElementById('wa-dynamic-link');
@@ -211,7 +208,6 @@
                 }
             };
 
-            // Swipe Logic
             let touchStartX = 0;
             let touchStartY = 0;
             const swipeThreshold = 50;
@@ -242,7 +238,7 @@
                 if (triggered || manuallyClosed) return;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollPos = window.scrollY;
-                const scrollPercentage = (scrollPos / scrollHeight) * 100;
+                const scrollPercentage = (scrollPos / (scrollHeight || 1)) * 100;
 
                 if (scrollPercentage >= 75) {
                     triggered = true;
@@ -251,7 +247,7 @@
                             popup.classList.add('visible');
                             badge.classList.add('active');
                         }
-                    }, 5000);
+                    }, 3000);
                 }
             };
 
