@@ -173,6 +173,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
+            const goal = params.get('goal');
+            const why = params.get('why');
             const hasName = firstName && firstName.trim() !== "";
             
             const userNameEl = document.getElementById('userName');
@@ -184,6 +186,7 @@
                 nameWrapper.style.display = 'none'; 
             }
 
+            // POPUP PROMPT TEXT (MAINTAINED)
             const popupText = document.getElementById('popup-text');
             if (hasName) {
                 popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
@@ -191,13 +194,14 @@
                 popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
             }
 
+            // PREFILLED WHATSAPP MESSAGE (UPDATED WITH GOAL/WHY)
             const waLink = document.getElementById('wa-dynamic-link');
-            const waIntro = hasName ? `It's ${firstName}. ` : "";
+            const waIntro = hasName ? `${firstName} here. ` : "";
             
-            const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
-            const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
+            const goalPart = goal ? `I've set "${goal}" as my main focus for the 6-Week Foundations.` : "I've just finished the application for the 6-Week Foundations.";
+            const whyPart = why ? ` This is important to me because: ${why}` : "";
             
-            const fullMessage = `${messagePart1}\n\n${messagePart2}`;
+            const fullMessage = `Hey Chris! ${waIntro}${goalPart}${whyPart}\n\nCould you also send over the Calculators you mentioned for getting started?`;
             
             waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
 
