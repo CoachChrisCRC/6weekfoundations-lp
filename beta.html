@@ -45,7 +45,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Message Popup Styles (Matching Dark Glass Style) */
         #wa-popup {
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
             transform: translateY(20px) scale(0.9);
@@ -79,7 +78,6 @@
             transform: scale(1);
         }
 
-        /* Subtle Glow for Success Icon */
         .icon-glow {
             filter: drop-shadow(0 0 12px rgba(135, 174, 115, 0.4)) drop-shadow(0 0 2px rgba(135, 174, 115, 0.6));
         }
@@ -150,8 +148,7 @@
                 </div>
                 <div class="text-left">
                     <p class="text-brand-sage text-[10px] font-black uppercase tracking-widest mb-1">Coach Chris</p>
-                    <p id="popup-text" class="text-neutral-300 text-[11px] leading-relaxed font-medium">
-                        </p>
+                    <p id="popup-text" class="text-neutral-300 text-[11px] leading-relaxed font-medium"></p>
                 </div>
             </div>
             <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-brand-sage/20"></div>
@@ -159,7 +156,6 @@
 
         <a id="wa-dynamic-link" href="#" target="_blank" class="flex items-center group relative whatsapp-bounce">
             <div id="wa-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-white text-brand-sage rounded-full flex items-center justify-center text-[10px] font-black shadow-lg z-10 border border-brand-sage/20">1</div>
-            
             <div class="w-16 h-16 bg-brand-sage rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 relative">
                 <div class="absolute inset-0 rounded-full bg-brand-sage animate-ping opacity-30"></div>
                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 448 512">
@@ -173,11 +169,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
+            const goal = params.get('goal');
+            const why = params.get('why');
             const hasName = firstName && firstName.trim() !== "";
             
+            // 1. UI Updates
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
-            
             if (hasName) {
                 userNameEl.textContent = firstName;
             } else {
@@ -185,22 +183,23 @@
             }
 
             const popupText = document.getElementById('popup-text');
-            if (hasName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
-            } else {
-                popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
-            }
+            popupText.textContent = hasName 
+                ? `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. — Chris`
+                : `Application received! Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. — Chris`;
 
+            // 2. WhatsApp Message Construction
             const waLink = document.getElementById('wa-dynamic-link');
-            const waIntro = hasName ? `It's ${firstName}. ` : "";
+            const waIntro = hasName ? `${firstName} here. ` : "";
             
-            const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
-            const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
+            // Construction of dynamic parts
+            const goalPart = goal ? `I've set "${goal}" as my main focus for the 6-Week Foundations.` : "I've just finished the application for the 6-Week Foundations.";
+            const whyPart = why ? ` This is important to me because: ${why}` : "";
             
-            const fullMessage = `${messagePart1}\n\n${messagePart2}`;
+            const message = `Hey Chris! ${waIntro}${goalPart}${whyPart}\n\nCould you also send over the Calculators you mentioned for getting started?`;
             
-            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
+            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
+            // 3. Popup & Scroll Logic
             const popup = document.getElementById('wa-popup');
             const badge = document.getElementById('wa-badge');
             const closeBtn = document.getElementById('close-wa');
@@ -209,59 +208,29 @@
 
             const dismissPopup = (swiped = false) => {
                 manuallyClosed = true;
-                if (!swiped) {
-                    popup.classList.remove('visible');
-                }
+                popup.classList.remove('visible');
             };
 
             let touchStartX = 0;
-            let touchStartY = 0;
-            const swipeThreshold = 50;
-
-            popup.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                touchStartY = e.changedTouches[0].screenY;
-            }, { passive: true });
-
+            popup.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
             popup.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const touchEndY = e.changedTouches[0].screenY;
-                const diffX = touchEndX - touchStartX;
-                const diffY = touchEndY - touchStartY;
-
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (diffX > swipeThreshold) {
-                        popup.classList.add('swipe-right');
-                        dismissPopup(true);
-                    } else if (diffX < -swipeThreshold) {
-                        popup.classList.add('swipe-left');
-                        dismissPopup(true);
-                    }
+                const diffX = e.changedTouches[0].screenX - touchStartX;
+                if (Math.abs(diffX) > 50) {
+                    popup.classList.add(diffX > 0 ? 'swipe-right' : 'swipe-left');
+                    dismissPopup(true);
                 }
             }, { passive: true });
 
             const handleScroll = () => {
                 if (triggered || manuallyClosed) return;
-                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPos = window.scrollY;
-                const scrollPercentage = (scrollPos / (scrollHeight || 1)) * 100;
-
-                if (scrollPercentage >= 75) {
+                const scrollPos = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                if (scrollPos >= 75) {
                     triggered = true;
-                    setTimeout(() => {
-                        if (!manuallyClosed) {
-                            popup.classList.add('visible');
-                            badge.classList.add('active');
-                        }
-                    }, 3000);
+                    setTimeout(() => { if (!manuallyClosed) { popup.classList.add('visible'); badge.classList.add('active'); } }, 3000);
                 }
             };
 
-            closeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                dismissPopup(false);
-            });
-
+            closeBtn.addEventListener('click', (e) => { e.preventDefault(); dismissPopup(); });
             window.addEventListener('scroll', handleScroll);
         });
     </script>
