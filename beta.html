@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-WEEK FOUNDATIONS | Body Software Update</title>
+    
+    <meta property="og:title" content="6-WEEK FOUNDATIONS | From 'Just Exercising' to Training with purpose.">
+    <meta property="og:description" content="A 42-day roadmap to build sustainable strength & fitness with The Barbell, Kettlebell & Bodyweight. No ego, no guesswork—just a smart strategy for people ready to move with purpose. #Fitter #Stronger #Better">
+    <meta property="og:image" content="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="6-WEEK FOUNDATIONS | From 'Just Exercising' to Training with purpose.">
+    <meta name="twitter:description" content="A 42-day roadmap to build sustainable strength & fitness with The Barbell, Kettlebell & Bodyweight.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg">
+
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --brand-olive: #606c38;
+            --brand-olive-light: #a3b18a;
+            --brand-olive-glow: rgba(96, 108, 56, 0.2);
+            --brand-sage: #a3b18a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden; 
+            scroll-padding-top: 5rem; 
+            background-color: #0d0e0d;
+        }
+
+        /* --- Momentum Visuals --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-thread {
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(to bottom, var(--brand-olive), transparent);
+            margin: 0 auto;
+            opacity: 0.4;
+        }
+
+        @keyframes heroFade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-in {
+            animation: heroFade 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .text-brand-olive { color: var(--brand-olive-light); }
+        .bg-brand-olive { background-color: var(--brand-olive); }
+
+        .bg-blob {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--brand-olive-glow) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--brand-olive);
+            color: #fefae0;
+            box-shadow: 0 4px 15px rgba(96, 108, 56, 0.3);
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(96, 108, 56, 0.5);
+            filter: brightness(1.2);
+        }
+        
+        .header-glass {
+            background: rgba(13, 14, 13, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes pulse-arrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-arrow {
+            animation: pulse-arrow 1.4s infinite ease-in-out;
+        }
+
+        /* --- Slider Styling --- */
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .testimonial-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 45%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 31%;
+            }
+        }
+
+        /* Chat Pop-up Animation */
+        #whatsapp-popup {
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+            transform: translateY(20px) scale(0.9);
+            pointer-events: none;
+            opacity: 0;
+            user-select: none;
+            will-change: transform, opacity;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        #whatsapp-popup.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        /* Swipe dismissal classes */
+        #whatsapp-popup.swipe-right {
+            transform: translateX(120%) rotate(10deg);
+            opacity: 0;
+        }
+        #whatsapp-popup.swipe-left {
+            transform: translateX(-120%) rotate(-10deg);
+            opacity: 0;
+        }
+
+        /* Notification Badge */
+        #whatsapp-badge {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: scale(0);
+        }
+        #whatsapp-badge.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* WhatsApp Glow Border Effect */
+        .whatsapp-glow {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 20px rgba(163, 177, 138, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="text-white antialiased">
+
+    <div class="bg-blob top-[-15%] left-[-10%]"></div>
+    <div class="bg-blob bottom-[10%] right-[-5%]" style="background: radial-gradient(circle, rgba(163, 177, 138, 0.1) 0%, rgba(0, 0, 0, 0) 70%);"></div>
+
+    <header class="sticky top-0 z-50 header-glass p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-left leading-none">
+                <div class="text-xl sm:text-2xl font-black uppercase tracking-tighter text-white">
+                    6-WEEK FOUNDATIONS
+                </div>
+                <div class="flex flex-col text-[10px] sm:text-xs font-bold uppercase text-neutral-400 mt-2 tracking-widest leading-normal">
+                    <span>COACH CHRIS</span>
+                    <span>CIRCULAR ROOTS COACHING</span>
+                    <span>TRAIN UNCNVNTNL</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col space-y-2">
+                <a href="#signup" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-extrabold bg-brand-olive text-[#fefae0] rounded-lg hover:brightness-110 transition duration-150 shadow-lg shadow-black/40 text-nowrap block">
+                    SIGN UP
+                </a>
+                <a href="#pricing" class="w-32 text-center px-4 py-2 text-[10px] sm:text-xs uppercase font-bold bg-white/5 text-white rounded-lg border border-white/10 backdrop-blur-md hover:bg-white/15 transition duration-150">
+                    PRICING
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="min-h-[90vh] flex flex-col items-start justify-center px-4 sm:px-6 py-20 hero-fade-in">
+        <div class="max-w-6xl mx-auto w-full">
+            <h1 class="text-6xl sm:text-7xl md:text-9xl font-black leading-[0.85] mb-10 uppercase max-w-5xl tracking-tighter">
+                <span id="personalized-greet">Actually</span> <span class="text-brand-olive">enjoy the process</span> of getting strong.
+            </h1>
+            <p class="text-xl sm:text-2xl font-light italic mt-4 max-w-4xl text-neutral-300 leading-relaxed border-l-2 border-brand-olive pl-6">
+                Let’s be honest: The fitness world is kind of a mess. Foundations is different. This isn't a "shout-at-you" bootcamp—it’s a smart roadmap for people ready to move from "just exercising" to actually training.
+            </p>
+            <a href="#roadmap" class="mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-brand-olive hover:text-white transition duration-300 inline-block">
+                ↓ Skip to program details
+            </a>
+        </div>
+    </section>
+    
+    <main>
+        <section class="py-24 px-4 sm:px-6 reveal">
+            <div class="max-w-6xl mx-auto glass-card-light rounded-[2.5rem] p-12 text-black overflow-hidden relative shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-black uppercase tracking-tighter mb-10">
+                            Is this <span class="text-brand-olive">for you?</span>
+                        </h2>
+                        <ul class="space-y-6 text-lg font-bold uppercase italic tracking-tight">
+                            <li class="flex items-start"><span class="text-brand-olive mr-4 mt-1 font-black">/</span> You've finished "Fundamentals" and wonder "now what?"</li>
+                            <li class="flex items-start"><span class="text-brand-olive mr-4 mt-1 font-black">/</span> You need a plan that actually tells you what to do.</li>
+                            <li class="flex items-start"><span class="text-brand-olive mr-4 mt-1 font-black">/</span> You used to be active but life got in the way.</li>
+                            <li class="flex items-start"><span class="text-brand-olive mr-4 mt-1 font-black">/</span> You're ready to train with purpose, not just sweat.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-black text-white p-12 rounded-[2rem] flex items-center justify-center relative shadow-inner">
+                        <div class="absolute inset-0 bg-brand-olive/20 blur-2xl"></div>
+                        <p class="text-3xl font-black text-center uppercase tracking-tighter leading-tight relative z-10">
+                            6 WEEKS. <br> SMART TRAINING. <br> <span class="text-brand-olive">ZERO GUESSWORK.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="scroll-thread"></div>
+
+        <section id="roadmap" class="py-24 px-4 sm:px-6 reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-20 text-center md:text-left">
+                    <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tighter">
+                        The Six-Week <span class="text-brand-olive">Roadmap</span>.
+                    </h2>
+                    <div class="w-32 h-2 bg-brand-olive mt-6 rounded-full mx-auto md:mx-0"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-brand-olive/20 flex items-center justify-center mb-6 text-brand-olive font-black text-xl border border-brand-olive/30">1</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">Weeks 1-2</h3>
+                        <p class="text-lg text-brand-olive font-bold uppercase italic mb-4">Finding Your Groove</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed">No ego here. We start with higher reps and a deep focus on perfecting your form. This is about building the movements that protect your body before we add the weight.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-brand-olive/20 flex items-center justify-center mb-6 text-brand-olive font-black text-xl border border-brand-olive/30">2</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">Weeks 3-4</h3>
+                        <p class="text-lg text-brand-olive font-bold uppercase italic mb-4">Adding Some Weight</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed">This is where we start putting more plates on the bar. Now that your form is solid, we'll begin challenging your nervous system and seeing what you're truly capable of.</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5">
+                        <div class="w-12 h-12 rounded-full bg-brand-olive/20 flex items-center justify-center mb-6 text-brand-olive font-black text-xl border border-brand-olive/30">3</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">Weeks 5-6</h3>
+                        <p class="text-lg text-brand-olive font-bold uppercase italic mb-4">Owning the Movement</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed">The "Strong 5" phase. We peak your absolute strength and lock in your new capacity. You’ll finish the six weeks feeling solid, moving better, and living with a total sense of confidence.</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="#equipment" class="inline-flex items-center space-x-3 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all text-xs font-black uppercase tracking-widest text-brand-olive">
+                        <span>View Equipment Needs</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="scroll-thread"></div>
+
+        <section class="py-24 px-4 sm:px-6 relative overflow-hidden reveal">
+            <div class="max-w-6xl mx-auto glass-card-light rounded-[2.5rem] p-12 sm:p-20 text-black shadow-2xl border-none">
+                <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter max-w-4xl mb-8">
+                    We don't do <span class="text-brand-olive">random</span>.
+                </h2>
+                <p class="text-2xl font-light italic mb-0 max-w-5xl leading-relaxed text-neutral-800">
+                    Most programs are so intense or random that you end up more sore than strong. We use a tiered system that covers all the bases—The Barbell, The Kettlebell, and The Finisher—ensuring you build <span class="font-bold uppercase tracking-wide">real-world strength</span> that actually lasts.
+                </p>
+            </div>
+        </section>
+
+        <section id="pillars" class="py-24 px-4 sm:px-6 reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">The <span class="text-brand-olive">Structure</span> of Your Session.</h2>
+                    <p class="text-neutral-400 uppercase tracking-widest text-xs font-bold">Every workout is designed with a clear purpose.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5 flex flex-col">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-olive/20 flex items-center justify-center mb-8 text-3xl border border-brand-olive/30 group-hover:scale-110 transition duration-500">🏋️</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">The Barbell</h3>
+                        <p class="text-sm text-brand-olive font-bold uppercase tracking-widest mb-6">Phase: Built to Last</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed mb-6">This is the heart of the "Strong 5." We focus on the Big Three—Squat, Press, and Deadlift. In Weeks 1-4, we dial in the technique; in Weeks 5-6, we use the barbell to unlock your true power.</p>
+                        <div class="mt-auto pt-6 border-t border-white/10 text-[10px] font-black uppercase tracking-widest text-neutral-500">Primary Goal: Solid Foundation</div>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5 flex flex-col">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-olive/20 flex items-center justify-center mb-8 text-3xl border border-brand-olive/30 group-hover:scale-110 transition duration-500">🔔</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">The Kettlebell</h3>
+                        <p class="text-sm text-brand-olive font-bold uppercase tracking-widest mb-6">Phase: Balanced Motion</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed mb-6">Standard machines isolate; kettlebells integrate. We use functional pairs to iron out the stability gaps that often lead to injury. This ensures your strength translates from the gym to the real world.</p>
+                        <div class="mt-auto pt-6 border-t border-white/10 text-[10px] font-black uppercase tracking-widest text-neutral-500">Primary Goal: Mobility & Stability</div>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-3xl group hover:border-brand-olive/40 transition-all duration-500 border border-white/5 flex flex-col">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-olive/20 flex items-center justify-center mb-8 text-3xl border border-brand-olive/30 group-hover:scale-110 transition duration-500">💪</div>
+                        <h3 class="font-black text-2xl uppercase mb-2">The Finisher</h3>
+                        <p class="text-sm text-brand-olive font-bold uppercase tracking-widest mb-6">Phase: Real-world Resilience</p>
+                        <p class="text-lg text-neutral-400 leading-relaxed mb-6">Controlled bodyweight work and core conditioning. We wrap up every session by reinforcing your movement habits so you leave feeling solid and capable, not just "beaten up."</p>
+                        <div class="mt-auto pt-6 border-t border-white/10 text-[10px] font-black uppercase tracking-widest text-neutral-500">Primary Goal: Engine & Core</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipment" class="py-24 px-4 sm:px-6 reveal bg-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tighter mb-6">Equipment <span class="text-brand-olive">& Kit.</span></h2>
+                        <p class="text-xl text-neutral-300 italic mb-10 leading-relaxed border-l-2 border-brand-olive pl-6">
+                            To get the most out of Foundations, you'll need access to a standard gym or a well-equipped home setup. We focus on tools that build maximum leverage.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M21,11H19V9A1,1,0,0,0,17,9V11H7V9A1,1,0,0,0,5,9V11H3a1,1,0,0,0,0,2H5v2a1,1,0,0,0,2,0V13H17v2a1,1,0,0,0,2,0V13h2a1,1,0,0,0,0-2Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Olympic Barbell & Plates</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A5,5,0,0,0,7,7V9.18a7,7,0,1,0,10,0V7A5,5,0,0,0,12,2Zm3,7H9V7a3,3,0,0,1,6,0Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Kettlebell Set</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M19,2H17V4H7V2H5V22H7V20H17v2h2ZM17,18H7V15H17Zm0-5H7V10H17ZM17,8H7V6H17Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Squat Rack / Stand</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-xl">
+                                <svg class="w-6 h-6 text-brand-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M21,16H3a1,1,0,0,1-1-1V10A1,1,0,0,1,3,9H21a1,1,0,0,1,1,1v5A1,1,0,0,1,21,16ZM4,14H20V11H4Zm1,4a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Zm12,0a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
+                                <span class="text-xs font-black uppercase tracking-widest">Flat Weight Bench</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl border-brand-olive/20">
+                        <h3 class="text-xl font-black uppercase tracking-tight mb-4">No gym access?</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                            Foundations is a Barbell and Kettlebell program. To get the results I promise, you need the right tools.
+                        </p>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6 font-bold italic">
+                            If you're training bodyweight-only, the Tally form will automatically suggest a more effective track for your current setup. We don't guess; we calibrate.
+                        </p>
+                        <div class="w-full h-px bg-white/10 mb-6"></div>
+                        <p class="text-[10px] font-black uppercase text-brand-olive tracking-[0.2em]">Required: 3 Sessions Per Week</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-4 sm:px-6 reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16 text-center">
+                    <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tighter">
+                        The "Active <span class="text-brand-olive">Coaching</span>" Experience.
+                    </h2>
+                    <p class="text-neutral-400 mt-6 uppercase tracking-[0.2em] text-xs font-bold max-w-2xl mx-auto leading-loose">
+                        Foundations isn't a static PDF. It’s a dynamic coaching environment designed to adjust to your real-life progress and form.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-10 rounded-2xl border-brand-olive/10 group hover:border-brand-olive/40 transition duration-500">
+                        <div class="text-brand-olive text-3xl mb-6 font-black tracking-widest uppercase opacity-40 group-hover:opacity-100 transition duration-500">01</div>
+                        <h4 class="font-black text-white text-xl mb-4 uppercase tracking-tight">The Training Portal</h4>
+                        <p class="text-sm text-neutral-400 leading-relaxed mb-4">No spreadsheets. Access your full program via our dedicated app. Every exercise includes a high-definition video demo and a space to log your weights, reps, and RPE.</p>
+                        <ul class="text-[10px] font-bold uppercase tracking-widest text-brand-olive space-y-2">
+                            <li>• Progress Graphing</li>
+                            <li>• Video Library</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-2xl border-brand-olive/10 group hover:border-brand-olive/40 transition duration-500">
+                        <div class="text-brand-olive text-3xl mb-6 font-black tracking-widest uppercase opacity-40 group-hover:opacity-100 transition duration-500">02</div>
+                        <h4 class="font-black text-white text-xl mb-4 uppercase tracking-tight">Form Review Feed</h4>
+                        <p class="text-sm text-neutral-400 leading-relaxed mb-4">Film your main lifts and upload them directly into the app. I personally review your clips to ensure your technique is safe and effective, sending back Loom or text feedback.</p>
+                        <ul class="text-[10px] font-bold uppercase tracking-widest text-brand-olive space-y-2">
+                            <li>• Technical Analysis</li>
+                            <li>• Safety First</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-2xl border-brand-olive/10 group hover:border-brand-olive/40 transition duration-500">
+                        <div class="text-brand-olive text-3xl mb-6 font-black tracking-widest uppercase opacity-40 group-hover:opacity-100 transition duration-500">03</div>
+                        <h4 class="font-black text-white text-xl mb-4 uppercase tracking-tight">The Inner Circle</h4>
+                        <p class="text-sm text-neutral-400 leading-relaxed mb-4">Join a focused community of people on the exact same 6-week path. Share wins, ask questions about equipment, and get weekly bonus tips on recovery and nutrition.</p>
+                        <ul class="text-[10px] font-bold uppercase tracking-widest text-brand-olive space-y-2">
+                            <li>• Peer Accountability</li>
+                            <li>• Weekly QA</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-2xl border-brand-olive/10 group hover:border-brand-olive/40 transition duration-500">
+                        <div class="text-brand-olive text-3xl mb-6 font-black tracking-widest uppercase opacity-40 group-hover:opacity-100 transition duration-500">04</div>
+                        <h4 class="font-black text-white text-xl mb-4 uppercase tracking-tight">Direct Guidance</h4>
+                        <p class="text-sm text-neutral-400 leading-relaxed mb-4">Life happens. If you miss a session or need a movement substitution due to a minor ache, you have a direct line to me. Consider it a coach in your pocket at all times.</p>
+                        <ul class="text-[10px] font-bold uppercase tracking-widest text-brand-olive space-y-2">
+                            <li>• 1-on-1 Support</li>
+                            <li>• Rapid Response</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="py-12 text-center reveal">
+            <div class="inline-block p-5 rounded-full bg-transparent group animate-arrow">
+                <svg class="w-8 h-8 text-brand-olive" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+
+        <section id="results" class="py-24 px-4 sm:px-6 reveal border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
+                    <p class="text-xl italic text-neutral-300 border-l-2 border-brand-olive pl-6 max-w-2xl leading-relaxed">
+                        "I've spent years helping clients bridge the gap between 'just exercising' and 'true training.' Here is the standard of results you can expect."
+                    </p>
+                    <div class="hidden md:flex items-center space-x-2 text-brand-olive font-black uppercase text-[10px] tracking-widest">
+                        <span>Scroll to explore</span>
+                        <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </div>
+
+                <div class="testimonial-slider pb-8">
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                        <div class="mb-6">
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
+                            <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Mastered Technical Lifting</h5>
+                        </div>
+                        <p class="text-lg italic leading-relaxed text-neutral-400 font-medium mb-8">"Chris taught me great technique for lifting and pushed me harder than I thought I could go. Highly recommended for anyone ready to up their game."</p>
+                        <div class="mt-auto flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive font-black text-xs">VJ</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black uppercase tracking-wider text-white">Vicky Jackson</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-neutral-500 tracking-widest">Foundational Strength</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                        <div class="mb-6">
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
+                            <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Surpassed Strength Goals</h5>
+                        </div>
+                        <p class="text-lg italic leading-relaxed text-neutral-400 font-medium mb-8">"I can lift way more now than I ever thought I’d be able to! Chris keeps every session engaging and encourages me to challenge myself constantly."</p>
+                        <div class="mt-auto flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive font-black text-xs">AG</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black uppercase tracking-wider text-white">Alana Giuliani</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-neutral-500 tracking-widest">Strength Progress</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                        <div class="mb-6">
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
+                            <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Functional Balance & Form</h5>
+                        </div>
+                        <p class="text-lg italic leading-relaxed text-neutral-400 font-medium mb-8">"Chris quickly identified how strength training could improve my running technique, balance, and posture. It ain't an easy ride—but well worth the trip!"</p>
+                        <div class="mt-auto flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive font-black text-xs">LW</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black uppercase tracking-wider text-white">Lisa Watson</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-neutral-500 tracking-widest">Running & Resilience</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                        <div class="mb-6">
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
+                            <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">High-Performance Refinement</h5>
+                        </div>
+                        <p class="text-lg italic leading-relaxed text-neutral-400 font-medium mb-8">"Chris has a unique skill for identifying obvious improvements that create huge results, helping me achieve things I didn't think possible."</p>
+                        <div class="mt-auto flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive font-black text-xs">PC</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black uppercase tracking-wider text-white">Paul "Spider" Chan</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-neutral-500 tracking-widest">Advanced Movement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-card p-10 rounded-3xl border border-white/5 flex flex-col">
+                        <div class="mb-6">
+                            <span class="text-[8px] font-black uppercase tracking-widest text-brand-olive block mb-2">The Win:</span>
+                            <h5 class="text-xl font-black text-white leading-tight uppercase tracking-tight">Smart, Structured Progress</h5>
+                        </div>
+                        <p class="text-lg italic leading-relaxed text-neutral-400 font-medium mb-8">"I'm over the moon with my results. Chris knows your strengths and weaknesses and structures sessions with that knowledge."</p>
+                        <div class="mt-auto flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive font-black text-xs">ST</div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black uppercase tracking-wider text-white">Suzanne Thompson</span>
+                                <span class="text-[9px] font-bold uppercase tracking-widest text-neutral-500 tracking-widest">Structured Coaching</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="#pricing" class="inline-flex items-center space-x-3 px-8 py-4 bg-brand-olive/20 border border-brand-olive/40 rounded-2xl hover:bg-brand-olive/30 transition-all text-xs font-black uppercase tracking-widest text-[#fefae0]">
+                        <span>View Pricing</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                </div>
+                
+                <div class="flex justify-center md:hidden space-x-2 mt-4 opacity-50">
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand-olive"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="coach" class="py-24 px-4 sm:px-6 border-t border-white/5 reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-brand-olive/30 rounded-[2rem] blur-xl group-hover:bg-brand-olive/40 transition duration-500"></div>
+                        <div class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                            <img src="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg" alt="Coach Chris" class="w-full grayscale hover:grayscale-0 transition duration-700 object-cover aspect-[4/5] scale-105 group-hover:scale-100">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-brand-olive font-black tracking-[.3em] uppercase text-xs mb-4">THE ARCHITECT</div>
+                        <h2 class="text-5xl sm:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">Meet Coach <span class="text-brand-olive">Chris.</span></h2>
+                        <div class="space-y-6 text-neutral-400 text-lg leading-relaxed italic">
+                            <p>"Let’s be honest: I’m probably not your typical PT. If you’re chasing a gold medal or want to step onto a bodybuilding stage, I’m likely not your guy. But if you’re an everyday person who just wants to feel <span class="text-white font-bold">notably fitter, stronger, and better</span> than you did yesterday—without the gym-head ego—then we’re going to get along just fine."</p>
+                            <p>"I founded Circular Roots because I was tired of seeing people ‘just exercising’ but getting nowhere. I don't want to just hand you a workout and walk away; I want to <span class="text-brand-olive font-bold uppercase tracking-tight">teach you how your body actually works</span>."</p>
+                            <p>"My approach is a bit like a ‘Body Software’ update: we strip back the noise and build your strength from the ground up using smart, simple principles. No confusing jargon, no guesswork—just a supportive roadmap and a solid foundation so you can move with confidence for the long haul. Let’s get to work."</p>
+                            <div class="pt-8 mt-8 border-t border-white/10">
+                                <p class="text-white font-black uppercase tracking-widest text-[10px] mb-4 opacity-50">Experience & Focus:</p>
+                                <ul class="grid grid-cols-2 gap-y-4 text-[11px] font-bold uppercase tracking-widest text-brand-olive">
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Foundational Mastery</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Sustainable Strength</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> 10+ Years Coaching</li>
+                                    <li class="flex items-center"><span class="mr-2 text-white/20">/</span> Evidence-Based Simplicity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-24 px-4 sm:px-6 reveal">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tighter">The <span class="text-brand-olive">Investment</span></h2>
+                    <p class="text-neutral-400 mt-2 uppercase tracking-[0.2em] text-xs font-bold">Transparent Pricing. Professional Results.</p>
+                </div>
+                
+                <div class="glass-card rounded-[2.5rem] p-10 sm:p-16 border-brand-olive/30 relative overflow-hidden shadow-2xl">
+                    <div class="absolute top-0 right-0 px-6 py-2 bg-brand-olive text-[#fefae0] text-[10px] font-black uppercase tracking-[0.2em] rounded-bl-2xl">
+                        Core Program
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-white/10 pb-12 gap-8">
+                        <div>
+                            <h3 class="text-4xl font-black uppercase tracking-tighter mb-2">6-Week Foundations Path</h3>
+                            <p class="text-neutral-400 italic font-light max-w-md">The complete 42-day intensive to overhaul how you move, lift, and think about training.</p>
+                        </div>
+                        <div class="text-left md:text-right">
+                            <span class="text-6xl font-black tracking-tighter text-brand-olive">£99</span>
+                            <p class="text-[10px] uppercase font-black text-neutral-500 tracking-widest mt-1">One-Off Payment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-12">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Full 6-Week Strategy</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">A roadmap from technique to peak strength.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Active Form Review</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">Personal technical analysis of your lifts.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">The Circular Roots App</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">All programming & video demos in one place.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Direct Messaging Access</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">A coach in your pocket for daily guidance.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 md:col-span-2">
+                            <div class="w-6 h-6 rounded-full bg-brand-olive/20 flex items-center justify-center text-brand-olive mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold uppercase tracking-tight text-neutral-200">Customised Nutrition Guidelines</span>
+                                <span class="text-[10px] text-neutral-500 uppercase font-medium">Personalised targets and habit support—no restrictive diets.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-neutral-500 italic text-center border-t border-white/5 pt-8">
+                        "This isn't a subscription you'll forget about by next month. It’s an investment in your foundation that pays dividends for years."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup" class="py-32 px-4 sm:px-6 reveal">
+            <div class="max-w-4xl mx-auto glass-card rounded-[3rem] p-12 sm:p-20 text-center relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-brand-olive/20 blur-[80px] rounded-full"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-olive/10 blur-[80px] rounded-full"></div>
+                
+                <p class="text-4xl sm:text-5xl font-black mb-8 uppercase text-white leading-tight tracking-tighter">
+                    Time to build a <br><span class="text-brand-olive">better foundation</span>.
+                </p>
+                <p class="text-xl italic mb-12 font-light text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+                    Take six weeks to graduate from the basics. Strength isn't just for the "fitness obsessed"—it's for anyone who wants to move better and live better.
+                </p>
+                
+                <div class="mb-8 animate-arrow">
+                    <svg class="w-8 h-8 text-brand-olive mx-auto opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                    </svg>
+                </div>
+
+                <button 
+                    data-tally-open="eqeBXl" 
+                    data-tally-layout="modal" 
+                    data-tally-hide-title="1" 
+                    data-tally-emoji-text="🏋️‍♂️🏋️‍♀️ " 
+                    data-tally-emoji-animation="heart-beat"
+                    data-tally-hidden-fields="access=fundamentals"
+                    class="cta-button px-14 py-6 font-black text-2xl uppercase tracking-tighter rounded-2xl">
+                    JOIN THE NEXT 6-WEEK PROGRAM INTAKE
+                </button>
+
+                <p class="mt-10 text-[10px] font-black uppercase text-neutral-500 tracking-[0.3em]">
+                    Limited Coaching Intake Slots Available.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-16 bg-black/50 backdrop-blur-md border-t border-white/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-[10px] mb-8 leading-relaxed text-neutral-500 uppercase tracking-widest">
+                General Fitness Disclaimer: Always consult your medical professional or doctor before you begin any fitness regime or make changes to your diet. This site provides general information for educational purposes only and is not intended to diagnose or treat any medical condition. You engage in physical activity at your own risk.
+            </p>
+            <p class="text-sm font-black text-white mb-2 tracking-tight">
+                &copy; <span id="current-year">2026</span> COACH CHRIS | CIRCULAR ROOTS COACHING | TRAIN UNCNVNTNL.
+            </p>
+            <p class="text-xs font-bold text-brand-olive uppercase tracking-widest">
+                Fitter. Stronger. Better.
+            </p>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+        <div id="whatsapp-popup" class="mb-4 mr-2 rounded-2xl p-4 shadow-2xl max-w-[280px] origin-bottom-right relative touch-none border border-brand-sage/30">
+            <button id="close-whatsapp" class="absolute -top-2 -left-2 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center hover:bg-neutral-800 transition shadow-lg z-10">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            
+            <div class="flex items-start space-x-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-brand-sage/50">
+                    <img src="https://raw.githubusercontent.com/CoachChrisCRC/6weekfoundations-lp/refs/heads/main/coachchrisbio.jpg" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <p class="text-brand-sage text-[10px] font-black uppercase tracking-widest mb-1">Coach Chris</p>
+                    <p class="text-neutral-200 text-[11px] leading-relaxed italic">
+                        Hey! Quick question about the equipment or the schedule? Happy to help you figure out if this is the right fit. — Chris
+                    </p>
+                </div>
+            </div>
+            <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white/10 backdrop-blur-md"></div>
+        </div>
+
+        <a id="whatsapp-link" href="#" target="_blank" class="flex items-center group relative">
+            <div id="whatsapp-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-white text-[#a3b18a] rounded-full flex items-center justify-center text-[10px] font-black shadow-lg z-10 border border-[#a3b18a]/20">1</div>
+            
+            <div class="w-14 h-14 bg-[#a3b18a] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 relative whatsapp-glow">
+                <div class="absolute inset-0 rounded-full bg-[#a3b18a] animate-ping opacity-30"></div>
+                <svg class="w-8 h-8 text-[#fefae0]" fill="currentColor" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.2-3.2-5.6-.3-8.6 2.4-11.3 2.5-2.4 5.6-6.5 8.3-9.8 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7.9-6.9-.5-9.8-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.5 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for Reveal Logic
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => revealObserver.observe(el));
+
+            // URL Params & Personalization
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name');
+            const accessType = params.get('access');
+
+            if (name) {
+                const greetSpan = document.getElementById('personalized-greet');
+                if (greetSpan) greetSpan.textContent = "Hey " + name + ", ready to";
+            }
+
+            // WhatsApp Message Logic
+            const whatsappBtn = document.getElementById('whatsapp-link');
+            const whatsappPopup = document.getElementById('whatsapp-popup');
+            const whatsappBadge = document.getElementById('whatsapp-badge');
+            const closeWhatsapp = document.getElementById('close-whatsapp');
+            
+            let isClosedManually = false;
+
+            if (whatsappBtn) {
+                let message = "Hey Chris, I'm reading through the 6-Week Foundations roadmap. Just wanted to ask a quick question about the program before I join?";
+                
+                // Check if user is coming from fundamentals
+                if (accessType === 'fundamentals') {
+                    message = "Hey Chris! I just finished the 14-day Fundamentals and I'm looking at the 6-Week Foundations roadmap. Ready to keep the momentum going—how do we get started?";
+                }
+                
+                whatsappBtn.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
+            }
+
+            // --- IMPROVED SWIPE LOGIC ---
+            let touchStartX = 0;
+            let touchStartY = 0;
+            const swipeThreshold = 50;
+
+            whatsappPopup.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            whatsappPopup.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const touchEndY = e.changedTouches[0].screenY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                // Check if swipe is more horizontal than vertical
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX > swipeThreshold) {
+                        // Swiped Right
+                        whatsappPopup.classList.add('swipe-right');
+                        dismissPopup(true);
+                    } else if (diffX < -swipeThreshold) {
+                        // Swiped Left
+                        whatsappPopup.classList.add('swipe-left');
+                        dismissPopup(true);
+                    }
+                }
+            }, { passive: true });
+
+            const dismissPopup = (swiped = false) => {
+                isClosedManually = true;
+                // If closed via "X" button, use a standard fade
+                if (!swiped) {
+                    whatsappPopup.classList.remove('visible');
+                }
+            };
+
+            closeWhatsapp.addEventListener('click', (e) => {
+                e.preventDefault();
+                dismissPopup(false);
+            });
+
+            // Scroll Logic for Pop-up Trigger (60%)
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                
+                // Show/Hide logic for the Message
+                if (scrollPercent >= 60 && scrollPercent <= 92 && !isClosedManually) {
+                    whatsappPopup.classList.add('visible');
+                } else {
+                    whatsappPopup.classList.remove('visible');
+                }
+
+                // Logic for the Badge: Once we pass 60%, it stays visible unless at bottom
+                if (scrollPercent >= 60 && scrollPercent <= 98) {
+                    whatsappBadge.classList.add('active');
+                } else {
+                    whatsappBadge.classList.remove('active');
+                }
+            });
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
