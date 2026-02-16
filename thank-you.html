@@ -168,25 +168,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const firstName = params.get('first_name');
+            const hasName = firstName && firstName.trim() !== "";
             
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
             
-            if (firstName) {
+            if (hasName) {
                 userNameEl.textContent = firstName;
             } else {
                 nameWrapper.style.display = 'none'; 
             }
 
             const popupText = document.getElementById('popup-text');
-            if (firstName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators so we can get your numbers locked in.`;
+            if (hasName) {
+                popupText.textContent = `Nice one, ${firstName}! I've got your application. Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
             } else {
-                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) and any questions you have.`;
+                popupText.textContent = `Application received! Drop me a message for the Calculators (Macro, 1rm, bf%) to lock in your numbers. Feel free to ask questions, then we can discuss next steps — Chris`;
             }
 
             const waLink = document.getElementById('wa-dynamic-link');
-            const waIntro = firstName ? `It's ${firstName}. ` : "";
+            const waIntro = hasName ? `It's ${firstName}. ` : "";
             
             const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
             const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
