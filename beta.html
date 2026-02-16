@@ -45,7 +45,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Message Popup Styles (Matching Dark Glass Style) */
         #wa-popup {
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
             transform: translateY(20px) scale(0.9);
@@ -171,29 +170,27 @@
             
             const userNameEl = document.getElementById('userName');
             const nameWrapper = document.getElementById('nameWrapper');
-            
-            if (firstName) {
+            const popupText = document.getElementById('popup-text');
+            const waLink = document.getElementById('wa-dynamic-link');
+
+            // Set main body personalization
+            if (firstName && firstName.trim() !== "") {
                 userNameEl.textContent = firstName;
             } else {
                 nameWrapper.style.display = 'none'; 
             }
 
-            const popupText = document.getElementById('popup-text');
-            if (firstName) {
-                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators so we can get your numbers locked in.`;
+            // Set Popup Text (Your original version with name logic)
+            if (firstName && firstName.trim() !== "") {
+                popupText.textContent = `Nice one, ${firstName}! I've got your application. Shoot me a message for the Calculators (Macro, 1RM, & BF%) so we can get your numbers locked in. Feel free to ask any other questions too — Chris`;
             } else {
-                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) and any questions you have.`;
+                popupText.textContent = `Application received! Shoot me a quick message here for the Calculators (Macro, 1RM, & BF%) & any questions you have, then we can chat about next steps. — Chris`;
             }
 
-            const waLink = document.getElementById('wa-dynamic-link');
+            // Set WhatsApp Link personalization
             const waIntro = firstName ? `It's ${firstName}. ` : "";
-            
-            const messagePart1 = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.`;
-            const messagePart2 = `Could you also send over the Calculators you mentioned for getting started?`;
-            
-            const fullMessage = `${messagePart1}\n\n${messagePart2}`;
-            
-            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(fullMessage)}`;
+            const message = `Hey Chris! ${waIntro}I've just finished the application and wanted to reach out to chat about the next steps for the 6-Week Foundations.\n\nCould you also send over the Calculators you mentioned for getting started?`;
+            waLink.href = `https://wa.me/447925116794?text=${encodeURIComponent(message)}`;
 
             const popup = document.getElementById('wa-popup');
             const badge = document.getElementById('wa-badge');
@@ -201,44 +198,10 @@
             let triggered = false;
             let manuallyClosed = false;
 
-            const dismissPopup = (swiped = false) => {
-                manuallyClosed = true;
-                if (!swiped) {
-                    popup.classList.remove('visible');
-                }
-            };
-
-            let touchStartX = 0;
-            let touchStartY = 0;
-            const swipeThreshold = 50;
-
-            popup.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                touchStartY = e.changedTouches[0].screenY;
-            }, { passive: true });
-
-            popup.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const touchEndY = e.changedTouches[0].screenY;
-                const diffX = touchEndX - touchStartX;
-                const diffY = touchEndY - touchStartY;
-
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (diffX > swipeThreshold) {
-                        popup.classList.add('swipe-right');
-                        dismissPopup(true);
-                    } else if (diffX < -swipeThreshold) {
-                        popup.classList.add('swipe-left');
-                        dismissPopup(true);
-                    }
-                }
-            }, { passive: true });
-
             const handleScroll = () => {
                 if (triggered || manuallyClosed) return;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPos = window.scrollY;
-                const scrollPercentage = (scrollPos / (scrollHeight || 1)) * 100;
+                const scrollPercentage = (window.scrollY / (scrollHeight || 1)) * 100;
 
                 if (scrollPercentage >= 75) {
                     triggered = true;
@@ -247,13 +210,14 @@
                             popup.classList.add('visible');
                             badge.classList.add('active');
                         }
-                    }, 3000);
+                    }, 5000);
                 }
             };
 
             closeBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                dismissPopup(false);
+                manuallyClosed = true;
+                popup.classList.remove('visible');
             });
 
             window.addEventListener('scroll', handleScroll);
